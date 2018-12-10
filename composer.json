@@ -1,0 +1,41 @@
+{
+    "name": "lexusalex/php-lib",
+    "type": "project",
+    "authors": [
+        {
+            "name": "alex",
+            "email": "alexsey_89@bk.ru"
+        }
+    ],
+    "config": {
+        "sort-packages": true,
+        "process-timeout": 1800
+    },
+
+    "require": {
+        "php": ">=7.2.0",
+        "ext-pdo": "*",
+        "twbs/bootstrap": "@stable",
+        "components/jquery": "@stable",
+        "psr/log": "@stable",
+        "psr/cache": "@stable",
+        "psr/http-message": "@stable",
+        "psr/container": "@stable",
+        "psr/link": "@stable",
+        "psr/http-server-handler": "@stable",
+        "psr/simple-cache": "@stable"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "@stable",
+        "phpunit/dbunit" : "@stable",
+        "squizlabs/php_codesniffer": "*",
+        "filp/whoops" : "*",
+        "guzzlehttp/guzzle" : "*"
+    },
+    "autoload": {
+
+    },
+    "scripts": {
+
+    }
+}
