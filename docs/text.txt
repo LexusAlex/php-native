@@ -53,3 +53,7 @@ php инфраструктура
 
 https://www.php-fig.org/psr/
 php doc
+
+Создание образов
+docker build -t lexusalex/php-native:php7.3 services/server-alpine-apache-php7.3
+docker run --name php7.3 -p 80:80 -d -v $PWD:/var/www/localhost/htdocs lexusalex/php-native:php7.3

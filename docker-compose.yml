@@ -3,22 +3,22 @@ version: '3.7'
 services:
   server:
     container_name: server
-    build: ./services/server
+    build: ./services/server-alpine-apache-php7.3
     volumes:
     - $PWD:/var/www/localhost/htdocs
-    - $PWD/services/server/etc/php/7.2/php.ini:/etc/php/7.2/php.ini
+    - $PWD/services/server-alpine-apache-php7.3/etc/php/7.3/php.ini:/etc/php/7.3/php.ini
     ports:
     - "80:80"
     links:
-    - "mariadb"
+    - "db"
 
-  mariadb:
-    container_name: mariadb
-    image: bianjp/mariadb-alpine
+  db:
+    container_name: db
+    image: bianjp/mariadb-alpine:latest
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: root
     volumes:
-    - $PWD/services/mariadb/data:/var/lib/mysql
+    - $PWD/services/db-alpine-mariadb/data:/var/lib/mysql
     ports:
     - "3306:3306"
