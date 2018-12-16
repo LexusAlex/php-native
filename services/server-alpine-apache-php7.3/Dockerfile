@@ -8,6 +8,7 @@ RUN apk update && apk add --no-cache \
         php7.3-mysqli \
         php7.3-pdo \
         php7.3-pdo_mysql \
+        php7.3-pdo_pgsql \
         php7.3-xdebug \
 		composer
 

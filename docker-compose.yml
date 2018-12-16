@@ -10,10 +10,12 @@ services:
     ports:
     - "80:80"
     links:
-    - "db"
+    - "mariadb"
+    - "mysql"
+    - "postgres"
 
-  db:
-    container_name: db
+  mariadb:
+    container_name: mariadb
     image: bianjp/mariadb-alpine:latest
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -21,4 +23,28 @@ services:
     volumes:
     - $PWD/services/db-alpine-mariadb/data:/var/lib/mysql
     ports:
-    - "3306:3306"
+    - "127.0.0.1:3306:3306"
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: root
+    volumes:
+    - $PWD/services/db-debian-mysql8/data:/var/lib/mysql
+    ports:
+    - "127.0.0.2:3306:3306"
+
+  postgres:
+    image: postgres:11-alpine
+    container_name: postgres
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: root
+      POSTGRES_DB: root
+    volumes:
+      - $PWD/services/db-alpine-postgres/data:/var/lib/postgresql/data
+    ports:
+    - "5432:5432"
