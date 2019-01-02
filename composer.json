@@ -9,7 +9,10 @@
     ],
     "config": {
         "sort-packages": true,
-        "process-timeout": 1800
+        "process-timeout": 1800,
+        "fxp-asset": {
+            "enabled": false
+        }
     },
 
     "require": {
@@ -17,25 +20,24 @@
         "ext-pdo": "*",
         "twbs/bootstrap": "@stable",
         "components/jquery": "@stable",
-        "psr/log": "@stable",
-        "psr/cache": "@stable",
-        "psr/http-message": "@stable",
-        "psr/container": "@stable",
-        "psr/link": "@stable",
-        "psr/http-server-handler": "@stable",
-        "psr/simple-cache": "@stable"
+        "slim/slim": "@stable",
+        "yiisoft/yii2": "@stable"
     },
     "require-dev": {
         "phpunit/phpunit" : "@stable",
-        "phpunit/dbunit" : "@stable",
         "squizlabs/php_codesniffer": "*",
-        "filp/whoops" : "*",
-        "guzzlehttp/guzzle" : "*"
+        "filp/whoops" : "*"
     },
     "autoload": {
 
     },
     "scripts": {
 
-    }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
 }

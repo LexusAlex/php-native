@@ -1,0 +1,63 @@
+version: '3.7'
+
+services:
+  apache:
+    container_name: apache
+    build: ./services/server-alpine-apache-php7.3
+    volumes:
+    - $PWD:/var/www/localhost/htdocs
+    - $PWD/services/server-alpine-apache-php7.3/etc/php/7.3/php.ini:/etc/php/7.3/php.ini
+    ports:
+    - "127.0.0.1:80:80"
+    links:
+    - "mariadb"
+    - "mysql"
+    - "postgres"
+
+  nginx:
+    container_name: nginx
+    build: ./services/server-alpine-nginx-php7.3
+    volumes:
+    - $PWD:/var/www/html
+    - $PWD/services/server-alpine-nginx-php7.3/etc/php/7.3/php.ini:/etc/php/7.3/php.ini
+    ports:
+    - "127.0.0.2:80:80"
+    links:
+    - "mariadb"
+    - "mysql"
+    - "postgres"
+
+  mariadb:
+    container_name: mariadb
+    image: bianjp/mariadb-alpine:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: root
+    volumes:
+    - $PWD/services/db-alpine-mariadb/data:/var/lib/mysql
+    ports:
+    - "127.0.0.1:3306:3306"
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: root
+    volumes:
+    - $PWD/services/db-debian-mysql8/data:/var/lib/mysql
+    ports:
+    - "127.0.0.2:3306:3306"
+
+  postgres:
+    image: postgres:11-alpine
+    container_name: postgres
+    environment:
+      POSTGRES_DB: root
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    volumes:
+      - $PWD/services/db-alpine-postgres/data:/var/lib/postgresql/data
+    ports:
+    - "127.0.0.1:5432:5432"
