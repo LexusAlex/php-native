@@ -19,14 +19,11 @@
         "php": ">=7.2.0",
         "ext-pdo": "*",
         "twbs/bootstrap": "@stable",
-        "components/jquery": "@stable",
-        "slim/slim": "@stable",
-        "yiisoft/yii2": "@stable"
+        "components/jquery": "@stable"
     },
     "require-dev": {
         "phpunit/phpunit" : "@stable",
-        "squizlabs/php_codesniffer": "*",
-        "filp/whoops" : "*"
+        "squizlabs/php_codesniffer": "*"
     },
     "autoload": {
 
